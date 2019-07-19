@@ -1,0 +1,56 @@
+<script>
+var a;
+a=1;
+var b = 2;
+var c ="홍길동";
+var d = c;
+var test;
+var world;
+console .log(a,b)
+function multi(){
+alert("실행되었습니다.");
+}
+multi();
+
+a = 10;
+b = 20;
+//리턴값이 있는 함수
+function hap(){
+	return c = a + b;
+}
+
+// 리턴값이 없는 함수
+function hap2(){
+ c = a + b;
+}
+// console .log(a,b,hap());
+// console .log(a,b,hap2());
+// console .log(c);
+// console.log(a, b,c ,d)
+// (parameter인자,매개변수)가 있는 함수.
+function hap3(x, y) {
+	var z = x + y;
+	return z;
+}
+
+console.log(hap3(50,100));
+</script>
+
+<!-- 
+선언된 함수는 여러개 만들 필요가 없음.
+alert-경고
+var  world; -변수 world라는 저장 공간을 만들고(변하는 수를 담을 수 있음)
+fuction-함수 -multi라는 방에 alert를 실행.
+function multi(){
+alert("실행되었습니다.");
+}
+multi();
+										-실행()를 안하면 앞에 담긴 내용이 나옴.
+										-console를 실행 앞에 해도 실행내용 안나옴.
+console.log(multi); -()를  안쓰면 multi라는 내용을 그대로 가져와서 문자로 뿌림.
+										-()를 쓰면 실행명령이 되는 것.
+	console .log(a,b,hap());
+합이라는 함수를 호출해서 실행해주세요. 보고가 안 된 상태.
+함수 안에 return을 하게 되면 호출한 이에게 값을 돌려줌.
+
+ -->
