@@ -1,6 +1,7 @@
 $(".fa-bars").mouseenter(function () {
 	$(this).css({"color":"#333"});
 	$(this).prev().stop().animate({
+		       //"navi-bg"
 		"width": "90px",
 		"height": "90px"
 	}, 300, function(){
@@ -31,7 +32,7 @@ $(".navi-bg").stop().animate({
 },200, 
 function(){
 	$(".fa-bars").show();
-	$(".fa-bars").hide();
+	$(".fa-times").hide();
 	$(".fa-bars").on("mouseleave",leaveFn);
 });
 };
