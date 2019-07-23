@@ -1,4 +1,4 @@
-$(".fa-bars").mouseenter(function () {
+/* $(".fa-bars").mouseenter(function () {
 	$(this).css({
 		"color": "#333"
 	});
@@ -18,9 +18,23 @@ $(".fa-bars").mouseenter(function () {
 			});
 		});
 	});
+}); */
+/* 클릭 */
+$(".fa-bars").click(function(){
+$(this).css({
+"color":"#333"
 });
-/* on/off */
-$(".fa-bars").on("mouseleave",leaveFn);
+$(".fa-bars").off("mouseleave");
+$(this).prev().stop().animate({
+	"width":"100%",
+	"height":"100%"
+},300, function(){
+	
+	$(".fa-bars").hide();
+	$(".fa-times").show()
+});
+});
+// $(".fa-bars").on("mouseleave",leaveFn);
 $(".fa-times").on("click",leaveFn);
 function leaveFn(){
 $(".fa-bars").css({
