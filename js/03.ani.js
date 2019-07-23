@@ -88,7 +88,7 @@ $(".vtc-nav").hover(function () {
 -{value}      :https://www.w3schools.com/jquery/eff_animate.asp
 -속도speed    :(ms:밀리초 -1/1000초)1000초:1초,2000:2초
 -easy         :(swing(css:easy-in-out) | linear(css:lineaer정속)) 
--function(){} :콜백(선언해 놓으면 애니메이션이 완료된 후 실행된다.)
+-function(){} :콜백(선언해 놓으면 애니메이션이 완료된 후 실행된다./뒤에 또다른 명령이 없을 경우, 생략가능하다.)
 */
 $("#bt-ani1").click(function () {
 	$("#box-ani1").stop().animate({

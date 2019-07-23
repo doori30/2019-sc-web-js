@@ -1,38 +1,38 @@
 $(".fa-bars").mouseenter(function () {
-	$(this).css({"color":"#333"});
+	$(this).css({
+		"color": "#333"
+	});
 	$(this).prev().stop().animate({
-		       //"navi-bg"
 		"width": "90px",
 		"height": "90px"
-	}, 300, function(){
+	}, 300, function () {
 		$(this).stop().animate({
-			"height":"100%"
-		},150, function(){
+			"height": "100%"
+		}, 150, function () {
 			$(this).stop().animate({
 				"width":"100%"
-			},300, function(){
-				$(".fa-bars").off("mouseleave")
+			}, 300, function(){
+			  $(".fa-bars").off("mouseleave");
 				$(".fa-bars").hide();
 				$(".fa-times").show();
 			});
 		});
 	});
 });
-
+/* on/off */
 $(".fa-bars").on("mouseleave",leaveFn);
 $(".fa-times").on("click",leaveFn);
-
 function leaveFn(){
 $(".fa-bars").css({
-	"color":"#f9f9f9"
+	"color":"#f8f8f8"
 });
- $(".navi-bg").stop().animate({
+$(".navi-bg").stop().animate({
 	"width":0,
-	"height":0
-},200, 
+	"height":0,
+},200,
 function(){
-	$(".fa-bars").show();
-	$(".fa-times").hide();
-	$(".fa-bars").on("mouseleave",leaveFn);
+$(".fa-bars").show();
+$(".fa-times").hide();
+$(".fa-bars").on("mouseleave",leaveFn);
 });
 };

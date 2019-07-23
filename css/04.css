@@ -1,51 +1,39 @@
 html,
-body {
+body{
 	height: 100%;
 }
-
-.wrap {
+.wrap{
 	width: 100%;
 	height: 100%;
 	background-color: #333;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	position: relative;
 }
-
-.logo {
-	color: rgb(49, 38, 33);
+h2{
+	text-align: center;
+	color: blueviolet;
 }
-
-/* .navi-wrap {
+.navi-bg{
 	position: absolute;
-	right: 0;
 	top: 0;
-	background-color: #ccc;
-} */
-
-.navi-bg {
-	position: absolute;
 	right: 0;
-	top: 0;
-	background-color: #ccc;
+	background-color: rgb(148, 174, 223);
 }
-
 .fa-bars {
 	position: absolute;
-	right: 30px;
-	top: 30px;
 	color: #f8f8f8;
 	font-size: 2rem;
+	top: 30px;
+	right: 30px;
 	cursor: pointer;
 }
-
 .fa-times{
 	position: absolute;
-	right: 30px;
-	top: 30px;
-	color: #333;
+	color: #000000;
 	font-size: 2rem;
+	top: 30px;
+	right: 30px;
 	cursor: pointer;
 	display: none;
 }
