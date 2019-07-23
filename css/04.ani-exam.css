@@ -21,8 +21,7 @@ body {
 	position: absolute;
 	right: 0;
 	top: 0;
-	width: 90px;
-	height: 90px;
+	background-color: #ccc;
 }
 
 .navi-bg {
@@ -39,4 +38,14 @@ body {
 	color: #f8f8f8;
 	font-size: 2rem;
 	cursor: pointer;
+}
+
+.fa-times{
+	position: absolute;
+	right: 30px;
+	top: 30px;
+	color: #333;
+	font-size: 2rem;
+	cursor: pointer;
+	display: none;
 }
