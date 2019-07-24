@@ -1,0 +1,9 @@
+html,
+body,
+.wrap
+{
+	height: 100;	
+}
+.gallery{
+	max-width: 400px;
+}
