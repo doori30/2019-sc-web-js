@@ -24,20 +24,20 @@
 			<h4 class="d-flex align-items-center">
 				<img src="../img/2.png" alt="제목" style="width: 60px;" class="mx-3">누가 누가 잘 뛰나~?</h4>
 		</div>
-		<div class="border border-success my-3 p-3 form-inline">
-			<input type="number" id="cnt" min="2" value="4" class="form-control">
-			<button class="btn btn-success mr-2">준비</button>
-			<button class="btn btn-primary mr-2 d-none">시작</button>
-			<button class="btn btn-danger mr-2">초기화</vbutton>
+		<div class="border border-primary my-3 p-3 form-inline">
+			<input type="number" id="cnt" min="2" max="100" value="4" class="form-control mr-2">
+			<button class="btn btn-success mr-2"id="btInit">준비</button>
+			<button class="btn btn-primary mr-2 d-none"id="btStart">시작</button>
+			<button class="btn btn-danger mr-2"id="btReset">초기화</button>
 	</div>
 	<div class="stage border border-secondary my-3 p-3 position-relative">
-		<div class="position-relative" style="width: 90px;">
+		<!-- <div class="player position-relative" style="width: 90px;">
 			<img src="../img/2.png" alt="선수" class="char w-100">
 			<div class="badge badge-dark bage-rounded px-2 position-absolute" style="top:0;right:0;">1</div>
-		</div>
+		</div> -->
 	</div>
 	</div>
-<div id="score-modal" class="modal fade">
+<div id="scoreModal" class="modal fade">
 	<div class="modal-dialog  modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -51,8 +51,7 @@
 			</div>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary">닫기</button>
-				<p>Content</p>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
 			</div>
 		</div>
 	</div>
