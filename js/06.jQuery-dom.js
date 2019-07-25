@@ -38,7 +38,8 @@
 -$(객체).prev("선택자")             =>객체의 이전 형제를 선택한다.
 -$(객체).eq("3")                    =>객체들 중 번호번째 객체를 선택한다.
                                       (번호는0부터 시작)
-
+-var idx = $(객체).index            =>부모를 기준으로 내가                              몇번째 자식인지 숫자를 리턴한다.
+                                       (첫번째는 0을 리턴)
 
 */
 $("#btAppend").click(function(){
@@ -69,4 +70,9 @@ $("#btEq").click(function(){
 	$(".box-new").eq(1).append('<span class:"ml-3">eq(1)</span>');
 	$(".box-new").eq(2).append('<span class:"ml-3">eq(2)</span>');
 	$(".box-new").eq(3).append('<span class:"ml-3">eq(3)</span>');
+});
+
+$("#btIndex").click(function(){
+	var idx = $(".box-def").index();
+	alert(idx);
 });
