@@ -14,27 +14,36 @@ var cnt;
 
 
 //초기화
+//시작버튼#btStart을 없애고, 준비버튼 #btInit 나오고, 입력창#cnt valu를 4로 만들고, .stage의 player를 지우고,모달창#scoreModal의.modal-body안을 지운다.
 $("#btReset").click(function () {
 	$("#btInit").removeClass("d-none");
 	$("#btStart").addClass("d-none");
+	$("#cnt").removeClass("d-none");
 	$("#cnt").val('4');
 	$(".stage").empty();
 	$("#scoreModal .modal-body").empty();
 })
 
 
-//실행
+//준비
 $("#btInit").click(function () {
-	//난 안보이고 btStart보이고 cnt갯수 만큼 player생성
+	//#btInit 안보이고 #btStart보이고 #cnt갯수 만큼 .player생성
 	$("#btInit").addClass("d-none");
 	$("#btStart").removeClass("d-none");
 	cnt = $("#cnt").val();
-	//   input요소의 갯수를 가져오기.
+	//   input요소의 value값을 전역변수(var cnt/함수밖에서의 변수) cnt에 저장한다.
 	//    val(숫자)를 쓰면 숫자를 val값으로 바꿔줌.
 	for (var i = 0; i < cnt; i++)
+	//7명을 부를때 0~6번을 돌려서 부름.
 		$(".stage").append(playerPrev + (i + 1) + playerNext);
+		//for{}<-한줄안에 다 들어오면 생략가능.
 });
+//시작
 $("#btStart").click(function () {
+	//#cnt의 갯수만큼 생성된 .player가 .animate()된다.
+	//단, 속도는 2초부터 2.5초 사이에 움직인다.(random)
+	//마지막 .playerdml .animate() 종료하는 시점에서 .scoreModal 한다.
+	//단, 각각의 .player가 .animate()가 종료될 때마다 .player의 .badge안의 숫자를 .modal-body의 h3태그로 등록한다.
 	var speed;
 	for (var i = 0; i < cnt; i++) {
 		speed = Math.floor(Math.random() * 500 + 2000);
