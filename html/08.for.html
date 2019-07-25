@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="../css/fa.min.css">
 	<link rel="stylesheet" href="../css/animate.css">
 	<link rel="stylesheet" href="../css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/base-bootstrap.css">
+	<link rel="stylesheet" href="../css/base-bootscrap.css">
 	
 	<script src="../js/jquery-3.4.1.min.js"></script>
 	<script src="../js/popper.min.js"></script>
@@ -16,7 +16,33 @@
 	<script src="../js/wow.min.js"></script>
 </head>
 <body>
+<div class="container">
+	<div class="my-3 text-center">
+		<button class="btn btn-primary" id="btTree">트리만들기</button>
+		<button class="btn btn-info" id="btBox">박스만들기</button>
+		<button class="btn btn-warning" id="btGugudan">구구단만들기</button>
+		<button class="btn btn-primary" id="btGugudan2">구구단만들기2</button>
+		<button class="btn btn-danger" id="btReset">초기화</button>
+	</div>
+	<div class="stage my-3 p-3 border border-primary rounded">
+		<div class="box-tree p-3 my-3 mx-auto border border-success rounded text-center">
+		</div>
 
+		<div class="boxes p-3 my-3 mx-auto border border-info rounded text-center clear-fix">	
+		</div>
+
+		<table class="tb-gugudan table table-striped table-bordered my-3 text-center">
+			<thead class="bg-dark text-white">
+				<tbody></tbody>
+			</thead>
+		</table>
+
+		<table class="tb-gugudan2 table table-striped table-bordered my-3 text-center">
+				<thead class="bg-dark text-white"></thead>
+				<tbody></tbody>
+			</table>
+	</div>
+</div>
 
 <script src="../js/08.for.js"></script>	
 </body>
