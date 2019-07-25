@@ -22,7 +22,7 @@ $("#btReset").click(function () {
 	$("#cnt").val('4');
 	$(".stage").empty();
 	$("#scoreModal .modal-body").empty();
-})
+});
 
 
 //준비
@@ -30,6 +30,7 @@ $("#btInit").click(function () {
 	//#btInit 안보이고 #btStart보이고 #cnt갯수 만큼 .player생성
 	$("#btInit").addClass("d-none");
 	$("#btStart").removeClass("d-none");
+	$("#cnt").addClass("d-none");
 	cnt = $("#cnt").val();
 	//   input요소의 value값을 전역변수(var cnt/함수밖에서의 변수) cnt에 저장한다.
 	//    val(숫자)를 쓰면 숫자를 val값으로 바꿔줌.
@@ -40,6 +41,8 @@ $("#btInit").click(function () {
 });
 //시작
 $("#btStart").click(function () {
+	$("#btStart").addClass("d-none");
+	$("#btReset").addClass("d-none");
 	//#cnt의 갯수만큼 생성된 .player가 .animate()된다.
 	//단, 속도는 2초부터 2.5초 사이에 움직인다.(random)
 	//마지막 .playerdml .animate() 종료하는 시점에서 .scoreModal 한다.
@@ -52,7 +55,10 @@ $("#btStart").click(function () {
 		}, speed, function () {
 			var myNumber = $(this).find(".badge").html();
 			var $h3 = $('<h3>' + myNumber + '번</h3>').appendTo("#scoreModal .modal-body");
-			if ($h3.index() == cnt - 1) $("#scoreModal").modal();
+			if ($h3.index() == cnt - 1) {
+				$("#scoreModal").modal();
+				$("#btReset").removeClass("d-none");
+			}
 		});
 	}
 	//var cnt는 함수 안에서만 진행/지역변수여서 전달이 안됨.
