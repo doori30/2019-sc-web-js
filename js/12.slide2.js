@@ -26,9 +26,11 @@ for(var i in slides) {
 	//$(".slides").append()
 	$slide[i] = $('<div class="slide"><img src="'+slides[i].src+'" class="w-100"></div>').appendTo('.slides');
 	$slide[i].css({"left":(i*100)+"%"});
-	if(i < slides.length-1)
+	if(i==0) $(".pager").append('<li class="cir-sel"></li>');
+	else if(i < slides.length-1)
 	$(".pager").append('<li class="cir"></li>');
 }
+//$(".pager > li").eq(0).removeClass("cir").addClass("cir-sel");
 //반복, 움직임
 interavl=setInterval(function(){
 	$(".slides").stop().animate({"left":(-now*100)+"%"},speed,function(){
@@ -36,8 +38,9 @@ interavl=setInterval(function(){
 		
 		if(now == $slide.length-1){
 			$(this).css({"left":0});
-			now=1;
+		
 			$(".pager > li").eq(0).removeClass("cir").addClass("cir-sel");
+			now=1;
 		}
 		else {
 			$(".pager > li").eq(now).removeClass("cir").addClass("cir-sel");
