@@ -41,7 +41,7 @@ $(".box-tree").append('<div> ** </div>')
 $("#btTree").click(function () {
 	var asterisk = '';
 	for (var i = 0; i < 13; i++) {
-		asterisk += '*';
+		asterisk = asterisk + '*';
 		if (i > 9) $(".box-tree").append('<div>**</div>')
 		else $(".box-tree").append('<div>' + asterisk + '</div>');
 	}
