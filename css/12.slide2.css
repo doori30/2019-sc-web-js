@@ -1,5 +1,6 @@
 .banner{
 	overflow: hidden;
+	position: relative;
 }
 
 .slides {
@@ -10,4 +11,26 @@
 	position: absolute;
 	top: 0;
 	width: 100%;
+}
+.pager{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position:absolute;
+	bottom: 5%;
+}
+.pager > li{
+	height: 16px;
+	border-radius: 8px;
+	margin: 0 5px;
+	cursor: pointer;
+	border: 3px solid #333;
+}
+.pager>.cir{
+	width: 16px;
+}
+.pager>.cir-sel{
+	width: 32px;
+	background-color: blueviolet;
 }
