@@ -188,17 +188,59 @@ var now =1;
 var html;
 
 //초기화
+init();
+function init(){
 for(var i in slides){
+	$(".slides3").append('<li class="slide"><img src="'+slides[i].src+'" class="w-100"></li>');
+}
+$(".slides3>.slide").each(function(i){
+	if(i==0){
+	$(".pager3").append('<li class="cir-sel"></li>');
+	$(this).parent().append($(this).clone());
+}
+	else $(".pager3").append('<li class="cir"></li>');
+});
+//$(".slides3").css({"top":0~-400%})
+}
+ /* for(var i in slides){
 	html = '<li class="slide"><img src="'+slides[i].src+'" class="w-100"></li>';
 	$(".slides3").append(html);
 	if(i == 0) $(".pager3").append('<li class="cir-sel"></li>');
 	else $(".pager3").append('<li class="cir"></li>');
 }
-$(".slides3").append($(".slide").eq(0).clone());
+$(".slides3").append($(".slide").eq(0).clone());*/
 
 
 //반복동작	
 function slideShow(){
+$(".slides3").stop().animate({"top":-(now*100)+"%"},speed,
+function(){
+	$(".pager3 > li").removeClass("cir-sel").addClass("cir")
+	if(now == slides.length){
+		$(this).css({"top":0});
+		$(".pager3 > li").eq(0).removeClass("cir").addClass("cir-sel");
+		$(".pager3 > li").eq(now).removeClass("cir-sel").addClass("cir");
+		now=1;
+	}
+	else {
+		now++;
+	}
+});
+
+}interval=setInterval(slideShow,gap);
+
+$(".slides3").mouseenter(function(){
+	clearInterval(interval);
+});
+$(".slides3").mouseleave(function(){
+	interval =setInterval(slideShow,gap);
+});
+$(".pager3 > li").click(function(){
+	now =$(this).index();
+	slideShow();
+});
+
+/*function slideShow(){
 $(".slides3").stop().animate({"top":-(now*100)+"%"}, speed,
 function(){
 	$(".pager3 > li").removeClass("cir-sel").addClass("cir");
@@ -213,10 +255,11 @@ function(){
 	}
 });
 }
-interval = setInterval(slideShow, gap);
+interval = setInterval(slideShow, gap);*/
 
 //event
-$(".slides3").mouseenter(function(){
+
+/*$(".slides3").mouseenter(function(){
 	clearInterval(interval);
 });
 $(".slides3").mouseleave(function(){
@@ -225,6 +268,6 @@ $(".slides3").mouseleave(function(){
 $(".pager3 > li").click(function(){
 	now =$(this).index();
 	slideShow();
-});
-
+}); */
+ 
 }());

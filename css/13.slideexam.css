@@ -1,48 +1,27 @@
-/* 1번 banner */
 .banner{
-	overflow: hidden;
 	position: relative;
 }
-
-.slides {
+.slides{
 	position: relative;
 }
-.slides > .slide {
+.slides>.slide{
 	position: absolute;
-	top: 0;
+	top:0;
 	width: 100%;
 }
-
-.slides2 {
-	position: relative;
-}
-
-.slides2 > .slide {
-	position: absolute;
-	top: 0;
-	width: 100%;
-}
-
-.slides3 {
-	position: absolute;
-	width: 100%;
-}
-
 .pager{
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	position:absolute;
-	bottom: 5%;
+	position: absolute;
 	z-index: 9999;
 }
-.pager > li{
+.pager>li{
 	height: 16px;
 	border-radius: 8px;
-	margin: 0 5px;
 	cursor: pointer;
-	border: 3px solid #333;
+	border: 3px solid tomato;
 }
 .pager>.cir{
 	width: 16px;
@@ -51,4 +30,3 @@
 	width: 32px;
 	background-color: blueviolet;
 }
-
