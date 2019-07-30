@@ -16,7 +16,7 @@ var slides = [
 {"src":"../img/p3.png", "link":"#"},//2
 {"src":"../img/p4.png", "link":"#"},//3
 {"src":"../img/p5.png", "link":"#"},//4
-{"src":"../img/p1.png", "link":"#"}//덤
+//덤{"src":"../img/p1.png", "link":"#"}
 ]; 
 
 //가로 슬라이드
@@ -29,25 +29,29 @@ var slides = [
 								//넘버가 4로 넣게 되면 시작하고 바로 4로 넘어감.
 	// var $slide = []; // class=slides를 생성할 slide를 담을 배열변수.저장할 공간
 	var html;
+
 	//초기화
 	for(var i in slides) {
 		//    0번 데이타에 있는 src
-		//$(".slides").append()
-		//$가 앞에 붙은 $슬라이드로 리턴함.
 		html='<div class="slide"><img src="'+slides[i].src+'" class="w-100"></div>';
 		/* $slide[i] = $('<div class="slide"><img src="'+slides[i].src+'" class="w-100"></div>').appendTo('.slides');//0번데이타
-		$slide[i].css({"left":(i*100)+"%"}); */
-		$(".slides").append(html);
-		if(i==0) $(".pager").append('<li class="cir-sel"></li>');
-		else if(i < slides.length-1)
-		$(".pager").append('<li class="cir"></li>');
+		$slide[i].css({"left":(i*100)+"%"}); 
+		//$(".slides").append()
+		//$가 앞에 붙은 $슬라이드로 리턴함.*/
+		$(".slides").append(html);	
+	}
+	$(".slides").append($(".slides > .slide").eq(0).clone());
+	//slides안에 있는 slide에 있는 0번째 복사해서 붙여주세요.
+	
+	$(".slides > .slide").each(function(i){
+		$(this).css({"left":(i*100)+"%"});//상단 숨긴문장을 여기서 명령함.
+		if(i==0) $(".pager1").append('<li class="cir-sel"></li>');
+		else if(i < slides.length)
+		$(".pager1").append('<li class="cir"></li>');
 		//if가 0이면 cir-sel을 붙이고 100%를 생성.
 		//if가 0이 아니면 5보다 작으면 cir을 생성
+		//else if(i < slides.length-1)
 		//if가 5보다 작지 않으면 if와 else if가 적합하지 않아 작업하지 않음.
-	}
-	$(".slide").each(function(i){
-		$(this).css({"left":(i*100)+"%"});//상단 숨긴문장을 여기서 명령함.
-		
 	});
 	//jQuery반복문.슬라이드 갯수만큼 반복이 실행됨.
 
@@ -67,16 +71,16 @@ var slides = [
 	//        slideShow라는 함수이름...선언과 동시에 실행 되지 않는다.
 	function slideShow(){
 		$(".slides").stop().animate({"left":(-now*100)+"%"},speed,function(){
-			$(".pager > li").removeClass("cir-sel").addClass("cir");
+			$(".pager1 > li").removeClass("cir-sel").addClass("cir");
 			//모든 페이저가 cir로 보여줌
-			if(now == slides.length-1){
+			if(now == slides.length){
 				$(this).css({"left":0});
-				$(".pager > li").eq(0).removeClass("cir").addClass("cir-sel");
+				$(".pager1 > li").eq(0).removeClass("cir").addClass("cir-sel");
 				now=1;
 			}//now-1일 때, 슬라이드5와 같지 않으므로 else로 내려감.
 			//now가 5일 때, if문 밑에 내용을 실행.
 			else {
-				$(".pager > li").eq(now).removeClass("cir").addClass("cir-sel");
+				$(".pager1 > li").eq(now).removeClass("cir").addClass("cir-sel");
 				now++;
 			}//now=5 fake->left0으로 바꿔주고 다시 1부터 시작함.
 		});
@@ -103,7 +107,7 @@ var slides = [
 	EVENT
 	-pager >li를 클릭하면 원하는 페이지로 이동한다. 
 	*/
-	$(".pager > li").click(function(){
+	$(".pager1 > li").click(function(){
 		now =$(this).index();
 		slideShow();
 	});
@@ -112,9 +116,76 @@ var slides = [
 
 
 
-
 //세로 페이드 슬라이드
 /* 2번 banner */
+(function(){
+	//전역변수
+	var interval;
+	var speed = 500;
+	var gap = 3000;
+	var depth = 10;
+	var html;
+	var now = 1;
+	var $slide;
+
+	//초기화
+	init();
+	function init(){
+		for(var i in slides){
+			html ='<li class="slide"><img src="'+slides[i].src+'"class="w-100"></li>'
+			$(".slides2").append(html);
+		}
+			$(".slides2 > .slide").each(function(i){
+				if(i==0){
+				$(".pager2").append('<li class="cir-sel"></li>');
+					$(this).css({"z-index":depth++});
+					//i가 0이라면 pager2는 cir-sel을 만들고 
+					//
+				}
+				else $(".pager2").append('<li class="cir"></li>');
+		});
+				$slide = $(".slides2 > .slide");
+	}
 
 
-	
+	//반복 동작함수
+	function slideShow(){
+	$slide.eq(now).css({"z-index":depth++,"opacity":0});
+	$slide.eq(now).stop().animate({"opacity":1},speed,function(){
+		$(".pager2 > li").removeClass("cir-sel").addClass("cir");
+		$(".pager2 > li").eq(now).removeClass("cir").addClass("cir-sel");
+		                     //여기서는 .을 찍지않음
+		if(now == slides.length-1) now=0;
+		else now++;
+	});
+	}
+interval =setInterval(slideShow, gap);
+
+//EVENT
+$(".slides2").mouseenter(function(){
+	clearInterval(interval);
+});
+
+$(".slides2").mouseleave(function(){
+	interval =setInterval(slideShow, gap);
+});
+
+$(".pager2 > li").click(function(){
+	now =$(this).index();
+	slideShow();
+});
+
+}());
+
+
+//세로 슬라이드
+(function(){
+	var interval;
+	var speed = 500;
+	var gap = 3000;
+	var depth = 10;
+	var html;
+	var now = 1;
+	var $slide;
+
+}());

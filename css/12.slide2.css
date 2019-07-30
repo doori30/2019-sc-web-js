@@ -7,12 +7,26 @@
 .slides {
 	position: relative;
 }
-
 .slides > .slide {
 	position: absolute;
 	top: 0;
 	width: 100%;
 }
+
+.slides2 {
+	position: relative;
+}
+
+.slides3 {
+	position: relative;
+}
+
+.slides2 > .slide {
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
 .pager{
 	width: 100%;
 	display: flex;
@@ -20,6 +34,7 @@
 	align-items: center;
 	position:absolute;
 	bottom: 5%;
+	z-index: 9999;
 }
 .pager > li{
 	height: 16px;
