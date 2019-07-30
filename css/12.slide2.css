@@ -17,13 +17,14 @@
 	position: relative;
 }
 
-.slides3 {
-	position: relative;
-}
-
 .slides2 > .slide {
 	position: absolute;
 	top: 0;
+	width: 100%;
+}
+
+.slides3 {
+	position: absolute;
 	width: 100%;
 }
 
