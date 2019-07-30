@@ -116,7 +116,7 @@ var slides = [
 
 
 
-//세로 페이드 슬라이드
+// 페이드 슬라이드
 /* 2번 banner */
 (function(){
 	//전역변수
@@ -140,7 +140,7 @@ var slides = [
 				$(".pager2").append('<li class="cir-sel"></li>');
 					$(this).css({"z-index":depth++});
 					//i가 0이라면 pager2는 cir-sel을 만들고 
-					//
+					//이것이 z-index값을 플러스 한다.
 				}
 				else $(".pager2").append('<li class="cir"></li>');
 		});
@@ -180,12 +180,26 @@ $(".pager2 > li").click(function(){
 
 //세로 슬라이드
 (function(){
-	var interval;
-	var speed = 500;
-	var gap = 3000;
-	var depth = 10;
-	var html;
-	var now = 1;
-	var $slide;
+//전역함수
+var interval;
+var speed = 500;
+var gap = 3000;
+var now =1;
+var html;
+
+//초기화
+for(var i in slides){
+	html='<li class="slide"><img src="'+slides[i].src+'" clsaa="w-100"></li>';
+	$(".slides3").append(html);
+}
+$(".slides3").append($(".slide").eq(0).clone());
+$(".slides").each(function(i){
+	$(this).css({"top":(i*100)+"%"});
+	if(i==0) $(".pager3").append('<li clsaa="cir-sel"></li>');
+	else if (i < slides.length-1)
+	$(".pager3").append('<li clsaa="cir"></li>');
+	})
+	
+
 
 }());
