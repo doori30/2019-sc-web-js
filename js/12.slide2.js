@@ -6,9 +6,18 @@
 				<li class="slide"><img src="../img/p1.png" alt="배너1" class="w-100"></li>  */
 
 	//IIFE(선언과 동시에 즉시 실행 함수.)
-	(function test(){
+	/* (function test(){
 		console.log("함수실행");
 	})();			
+
+	//jQuery Dimensions
+	console.log("height():" + $(".box").height());
+	console.log("width():" + $(".box").height());
+	console.log("innerHeight():" + $(".box").height());
+	console.log("innerWidth():" + $(".box").height());
+	console.log("outerHeight():" + $(".box").height());
+	console.log("outerWidth():" + $(".box").height()); */
+
 
 var slides = [
 {"src":"../img/p1.png","link":"#"},//0
@@ -18,6 +27,12 @@ var slides = [
 {"src":"../img/p5.png", "link":"#"},//4
 //덤{"src":"../img/p1.png", "link":"#"}
 ]; 
+
+//resize 이벤트
+$(window).resize(function(){
+	console.log($(this).width());
+});
+
 
 //가로 슬라이드
 /* 1번 banner */
@@ -53,6 +68,24 @@ var slides = [
 		//else if(i < slides.length-1)
 		//if가 5보다 작지 않으면 if와 else if가 적합하지 않아 작업하지 않음.
 	});
+/* 	$(".slides").imagesLoaded(function(){
+		$(window).resize(function(){
+			$(".slides").outerHeight($(".slides > .slide").eq(0).outerHeight());
+		}).trigger("resize");
+	}); 
+		$(".slides").imagesLoaded(function(){
+		$(window).resize(function(){
+			$(".slides").parent().outerHeight($(".slides > .slide").eq(0).outerHeight());
+		}).trigger("resize");
+	});
+	*/
+	$(window).resize(function(){
+		$(".slides").outerHeight($(".slides > .slide").eq(0).outerHeight());
+	});
+	$(".slides").imagesLoaded(function(){
+		$(window).trigger("resize");
+	});
+
 	//jQuery반복문.슬라이드 갯수만큼 반복이 실행됨.
 
 	/* 
@@ -142,11 +175,15 @@ var slides = [
 					//i가 0이라면 pager2는 cir-sel을 만들고 
 					//이것이 z-index값을 플러스 한다.
 				}
-				else $(".pager2").append('<li class="cir"></li>');
+				else {$(".pager2").append('<li class="cir"></li>')};
 		});
 				$slide = $(".slides2 > .slide");
 	}
-
+	$(".slides2").imagesLoaded(function(){
+		$(window).resize(function(){
+			$(".slides2").parent().outerHeight($(".slides2 > .slide").eq(0).outerHeight());
+		}).trigger("resize");
+	});
 
 	//반복 동작함수
 	function slideShow(){
@@ -185,7 +222,6 @@ var interval;
 var speed = 500;
 var gap = 3000;
 var now =1;
-var html;
 
 //초기화
 init();
@@ -193,15 +229,24 @@ function init(){
 for(var i in slides){
 	$(".slides3").append('<li class="slide"><img src="'+slides[i].src+'" class="w-100"></li>');
 }
-$(".slides3>.slide").each(function(i){
+$(".slides3 > .slide").each(function(i){
 	if(i==0){
 	$(".pager3").append('<li class="cir-sel"></li>');
 	$(this).parent().append($(this).clone());
 }
 	else $(".pager3").append('<li class="cir"></li>');
 });
-//$(".slides3").css({"top":0~-400%})
+
+$(window).resize(function(){
+	$(".slides3").parent().outerHeight($(".slides3 > .slide").eq(0).outerHeight());
+});
+
+$(".slides3").imagesLoaded(function(){
+	$(window).trigger("resize");
+});
 }
+//$(".slides3").css({"top":0~-400%})
+
  /* for(var i in slides){
 	html = '<li class="slide"><img src="'+slides[i].src+'" class="w-100"></li>';
 	$(".slides3").append(html);
@@ -215,14 +260,14 @@ $(".slides3").append($(".slide").eq(0).clone());*/
 function slideShow(){
 $(".slides3").stop().animate({"top":-(now*100)+"%"},speed,
 function(){
-	$(".pager3 > li").removeClass("cir-sel").addClass("cir")
+	$(".pager3 > li").removeClass("cir-sel").addClass("cir");
 	if(now == slides.length){
 		$(this).css({"top":0});
 		$(".pager3 > li").eq(0).removeClass("cir").addClass("cir-sel");
-		$(".pager3 > li").eq(now).removeClass("cir-sel").addClass("cir");
 		now=1;
 	}
 	else {
+		$(".pager3 > li").eq(now).removeClass("cir").addClass("cir-sel");
 		now++;
 	}
 });
@@ -239,6 +284,7 @@ $(".pager3 > li").click(function(){
 	now =$(this).index();
 	slideShow();
 });
+}());
 
 /*function slideShow(){
 $(".slides3").stop().animate({"top":-(now*100)+"%"}, speed,
@@ -270,4 +316,3 @@ $(".pager3 > li").click(function(){
 	slideShow();
 }); */
  
-}());
