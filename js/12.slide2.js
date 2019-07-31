@@ -316,3 +316,15 @@ $(".pager3 > li").click(function(){
 	slideShow();
 }); */
  
+//
+var slides = [
+{"src":"../img/p1.png","link":"#"},//0
+{"src":"../img/p2.png", "link":"#"},//1
+{"src":"../img/p3.png", "link":"#"},//2
+{"src":"../img/p4.png", "link":"#"},//3
+{"src":"../img/p5.png", "link":"#"},//4
+//덤{"src":"../img/p1.png", "link":"#"}
+]; 
+
+for(var i in slides)
+html='<li class="slide"><img src="'+slides[i].src+'" class="w-100"></li>'
