@@ -1,0 +1,19 @@
+var slides = [
+	{src:"../img/banner3/prd1 (1).png"},
+	{src:"../img/banner3/prd2.png"},
+	{src:"../img/banner3/prd3.png"},
+	{src:"../img/banner3/prd4.png"},
+	{src:"../img/banner3/prd5.png"},
+	{src:"../img/banner3/prd6.png"},
+	{src:"../img/banner3/prd7.png"},
+	{src:"../img/banner3/prd8.png"},
+];
+/* <li class="slide p-2" style="flex: 25% 0 0;">
+			<img src="../img/banner3/prd1 (1).png" class="w-100">
+		</li> */
+		init();
+		function init(){
+			for(var i =0 ; i<6; i++){
+				
+			}
+		}
