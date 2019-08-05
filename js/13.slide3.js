@@ -34,7 +34,7 @@ function slideAni() {
 	else $(".slide").eq(0).find("img").attr("src", slides[(now--)].src);
 	// 보여지는 4개의 li
 	for(var i=0; i<4; i++) {
-		if()
+		
 	}
 	$(".slides").stop().animate({"left": tar}, speed, function(){
 
