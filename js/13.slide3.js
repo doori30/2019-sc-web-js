@@ -1,45 +1,122 @@
 var slides = [
-	{src: "../img/prd0.png"},
-	{src: "../img/prd1.png"},
-	{src: "../img/prd2.png"},
-	{src: "../img/prd3.png"},
-	{src: "../img/prd4.png"},
-	{src: "../img/prd5.png"},
-	{src: "../img/prd6.png"},
-	{src: "../img/prd7.png"},
-	{src: "../img/prd8.png"}
+	{src: "../img/banner3/prd1.png"},
+	{src: "../img/banner3/prd2.png"},
+	{src: "../img/banner3/prd3.png"},
+	{src: "../img/banner3/prd4.png"},
+	{src: "../img/banner3/prd5.png"},
+	{src: "../img/banner3/prd6.png"},
+	{src: "../img/banner3/prd7.png"},
+	{src: "../img/banner3/prd8.png"},
+	{src: "../img/banner3/prd9.png"}
 ];
 
-var now = 0;	//  맨 처음 .slide의 index
+var now = 0;									//  맨 처음 .slide의 index
 var end = slides.length - 1;	// 마지막 .slide의 index
-var dir = "L";	// 움직이는 방향 L / R
-var tar; 	// 움직임 목표값 L:-50% / R:0
+var dir = "L";								// 움직이는 방향 L / R
+var tar;                      // 움직임 목표값 L:-50% / R:0
+var cnt = 4;								  //화면에 보여지는 갯수
+var slideCnt = cnt + 2;       //li.slide의 갯수 
+var slideWid = 100/cnt.toFixed(4);
+                       //slide의 width를 소수점 5자리까지
 var speed = 500;
 var gap = 3000;
-init();
+var arr = [];
+var interval;
+
+            
+
+init(); 
 function init() {
 	for(var i=0, html=''; i<6; i++) {
-		html += '<li class="slide p-2" style="flex: 25% 0 0;">';
+		html += '<li class="slide p-2" style="flex:'+slideWid+' % 0 0;">';
 		html += '<img src="" class="w-100">';
 		html += '</li>';
 	}
 	$(".slides").html(html);
-}
+};
+slideInit();
+function slideInit() {
+	// if(dir == "L") tar = (slideWid *2)+"%";
+	// else tar = 0;
+	// 6개의 칸에 들어갈 index 계산
+	if(now == 0) arr[0] = end;
+	else arr[0] = now - 1;
+	// if(now + cnt-1 < end) arr[cnt+1] = now + cnt;
+	//  else arr[cnt+1] = Math.abs(end - now - cnt-1);
+	for(var i=0; i<=cnt; i++) {
+		if(i + now > end) arr[(i+1)] = i + now - end - 1;
+		else arr[(i+1)] = now + i;
+	}
+	console.log(arr);
+	for(var i=0; i<slideCnt; i++) {
+		$(".slide").eq(i).find("img").attr("src", slides[arr[i]].src);
+	}
+	$(".slides").css({"left": 1*-slidWid+"%"});
+//내 다음번 now
+	if(dir == "L") {
+		if(now == end) now = 0;
+		else now++;
+	}
+	else {
+		if(now == 0) now = end;
+		else now--;
+	};
+};
 
 function slideAni() {
-	if(dir == "L") tar = "-50%";
+	if(dir == "L") tar = -2*slideWid+"%";
 	else tar = 0;
-	// 맨처음 li
-	if(now == 0) $(".slide").eq(0).find("img").attr("src", slides[end].src);
-	else $(".slide").eq(0).find("img").attr("src", slides[(now--)].src);
-	// 보여지는 4개의 li
-	for(var i=0; i<4; i++) {
-		
-	}
-	$(".slides").stop().animate({"left": tar}, speed, function(){
-
-	});
+	$(".slides").stop().animate({"left": tar}, speed, slideInit);
 }
 
+interval = setInterval(slideAni, gap);
 
+/* init(); 
+ ▷최초 한번실행 이미지가 들어갈 빈 li를 생성한다.
+function init() {
+	for(var i=0, html=''; i<6; i++) {
+		html += '<li class="slide p-2" style="flex:'+slideWid+' % 0 0;">';
+		html += '<img src="" class="w-100">';
+		html += '</li>';
+	}
+	$(".slides").html(html);
+};
+slideInit();
+ ▷애니메이션이 끝난 후 이미지 배치 재조정
+function slideInit() {
+	if(dir == "L") tar = (slideWid *2)+"%";
+	else tar = 0;
+	// 6개의 칸에 들어갈 index 계산
+	if(now == 0) arr[0] = end;
+	else arr[0] = now - 1;
+	if(now + cnt-1 < end) arr[cnt+1] = now + cnt;
+	 else arr[cnt+1] = Math.abs(end - now - cnt-1);
+	for(var i=0; i<cnt; i++) {
+		if(i + now > end) arr[(i+1)] = i + now - end - 1;
+		else arr[(i+1)] = now + i;
+	}
+	console.log(arr);
+	for(var i=0; i<slideCnt; i++) {
+		$(".slide").eq(i).find("img").attr("src", slides[arr[i]].src);
+	}
+	$(".slides").css({"left": 1*-slidWid+"%"});
+
+	if(dir == "L") {
+		if(now == end) now = 0;
+		else now++;
+	}
+	else {
+		if(now == 0) now = end;
+		else now--;
+	};
+};
+
+function slideAni() {
+	if(dir == "L") tar = -2*slideWid+"%";
+	else tar = 0;
+	$(".slides").stop().animate({"left": tar}, speed, slideInit);
+}
+
+interval = setInterval(slideAni, gap);
+ */
 
