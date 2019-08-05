@@ -26,16 +26,18 @@ var interval;
             
 
 init(); 
+// 최초 1번 실행 - 이미지가 들어갈 빈 li를 생성한다.
 function init() {
-	for(var i=0, html=''; i<6; i++) {
+	for(var i=0, html=''; i<slideCnt; i++) {
 		html += '<li class="slide p-2" style="flex:'+slideWid+' % 0 0;">';
 		html += '<img src="" class="w-100">';
 		html += '</li>';
 	}
 	$(".slides").html(html);
 };
-slideInit();
+slideInit();// 애니메이션이 끝난 후 이미지 배치 재조정
 function slideInit() {
+		// 6개의 칸에 들어갈 index 계산
 	// if(dir == "L") tar = (slideWid *2)+"%";
 	// else tar = 0;
 	// 6개의 칸에 들어갈 index 계산
@@ -51,7 +53,7 @@ function slideInit() {
 	for(var i=0; i<slideCnt; i++) {
 		$(".slide").eq(i).find("img").attr("src", slides[arr[i]].src);
 	}
-	$(".slides").css({"left": 1*-slidWid+"%"});
+	$(".slides").css({"left": -slideWid+"%"});
 //내 다음번 now
 	if(dir == "L") {
 		if(now == end) now = 0;
