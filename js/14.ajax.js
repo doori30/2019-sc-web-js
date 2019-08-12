@@ -1,10 +1,14 @@
 $("#btList").click(function(){
 	$.ajax({ 
 		url:"http://webmir.co.kr/score/score_li.php",
+		// 주소가 잘 못 되었을 때에는 표시가 안남. undefined
 		type:"get",
-		dataType:"json",
+		dtaType:"json",
 		success: function(res){
 			console.log(res);
+		},
+		error:function(xhr,stat,err){
+			console.log(xhr,stat,err);
 		}
 	});
 });
@@ -22,6 +26,9 @@ $.ajax({
 	},
 	success: function(res){
 		console.log(res);
+	},
+	error:function(xhr,stat,err){
+		console.log(xhr,stat,err);
 	}
 });
 });
