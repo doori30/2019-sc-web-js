@@ -1,0 +1,32 @@
+<script>
+var word = "두리"
+while (true) {
+    var answer = prompt(word)
+    if(word[word.length-1] === answer[0]) {
+        //맞을때
+        alert('딩동댕')
+        word = answer;
+    }
+    else {
+        //틀렸을 때
+        alert('땡');
+    }
+} 
+//실행 o 끝이 없다. while이 true이기 때문에 
+// for문으로 바꿔주면 
+
+// for(var word ='두리'; true; ){
+//     var answer = prompt(word)
+//     if(word[word.length - 1] === answer[0]) {
+//         //맞을때
+//         alert('딩동댕')
+//         word = answer;
+//     }
+//     else {
+//         //틀렸을 때
+//         alert('땡');
+//     }
+// }
+  
+
+</script>
