@@ -1,0 +1,39 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>랜덤 구구단</title>
+</head>
+<body>
+   <div class="container">
+       <h1> 랜덤 구구단</h1>
+   </div> 
+
+   <div class="main">
+       <button id="bt">구구단 시작</button>
+   </div>
+
+   <script src="../js/16.gugudan.js"></script>
+</body>
+</html> -->
+
+<script>
+            while(true){
+                var num1 = Math.floor(Math.random()* 9) + 1; //구구단 앞숫자
+                var num2 = Math.floor(Math.random()* 9) + 1;//구구단 뒤숫자
+                var result = num1 * num2; //결과
+                var gugudan =true; //조건
+                while (gugudan) {
+                    var answer = prompt(String(num1) + '곱하기' + String(num2) + '는?')
+                    if(result === Number(answer)){
+                        alert('정답');
+                        gugudan = false;
+                    }
+                    else {
+                        alert('땡')
+                    }
+                }
+        }
+</script>
